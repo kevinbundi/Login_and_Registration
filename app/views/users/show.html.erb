@@ -1,0 +1,14 @@
+<div class="col-md-6 col-md-offset-4">
+<p style="color:green"><%= flash[:update_message] %></p>
+<p style="color:green"><%= flash[:login_message] %></p>
+	<h1><%=@user.name.capitalize%>'s Profile</h1>
+	<p>Name: <%=@user.name.capitalize%></p>
+	<p>Email: <%=@user.email%></p>
+	<p><a href="/users/<%=@user.id%>/edit">edit profile</a></p>
+
+	<form action="/users/<%=@user.id%>" method="post">
+		<input type="hidden" name="_method" value="delete">
+		<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+		<input type="submit" value="Delete Account">
+	</form>
+</div>
