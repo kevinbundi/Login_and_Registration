@@ -1,5 +1,21 @@
 Rails.application.routes.draw do
-  root 'sessions#new'
+  post 'likes/:id' => 'likes#create'
+
+  delete 'likes/:id' => 'likes#destroy'
+
+  get 'secrets' => 'secrets#index'
+
+  post 'secrets' => 'secrets#create'
+
+  get 'secrets/:id/edit' => 'secrets#edit'
+
+  post 'secrets/:id' => 'secrets#update'
+
+  delete 'secrets/:id' => 'secrets#destroy'
+
+  delete 'user_secrets/:id' => 'secrets#destroy_user_secrets'
+
+  root 'sessions#new' 
 
   get 'users' => 'users#index'
 

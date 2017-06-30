@@ -14,26 +14,4 @@
  *= require_tree .
  *= require_self
  */
-*{ 
-	/*border: 1px solid gray;*/
- }
-html, body{
-	height: 100%;
-}
-.container{
-	height: 100%;
-	background-image: url('background.jpg');
- 	background-size: cover;
- 	background-attachment: fixed;
- 	background-position: center;
- 	background-repeat: no-repeat;
-
-}
-.header{
-	border: 1px solid gray;
-	margin: 5px 0 5px 0; 
-}
-.my_navbar{
-	margin-top: 1px;
-}
 

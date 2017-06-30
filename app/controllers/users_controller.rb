@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :require_login, except:[:create, :new]
+  before_action :logged_in, only: [:new]
+
   def index
   end
 
@@ -9,7 +12,7 @@ class UsersController < ApplicationController
   		flash[:message] = "registration successful"
   		redirect_to '/sessions/new'
   	else
-  		flash[:reg_errors] = []
+  		flash[:reg_errors] = [] 
       user.errors.full_messages.each do |msg|
           flash[:reg_errors] << msg
       end
@@ -21,6 +24,8 @@ class UsersController < ApplicationController
 
   def show
   	@user = User.find(session[:user_id])
+    @secrets = Secret.where(user: current_user).reverse
+    @secrets_liked = current_user.secrets_liked.reverse
   end
 
   def edit

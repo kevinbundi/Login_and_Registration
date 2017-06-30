@@ -1,6 +1,8 @@
 class SessionsController < ApplicationController
-  def new
+  skip_before_action :require_login, except: [:destroy] 
+  before_action :logged_in, only: [:new]
 
+  def new
   end
   def create
   	user = User.find_by_email(params[:email])
@@ -19,7 +21,7 @@ class SessionsController < ApplicationController
   	else
   		session[:user_id] = user.id
   		flash[:login_message] = "Log in successful"
-  		redirect_to '/users/' + user.id.to_s
+  		redirect_to '/secrets/' 
   	end
   end
   def destroy
@@ -27,4 +29,4 @@ class SessionsController < ApplicationController
   	flash[:logout_message] = "you have been logged out"
   	redirect_to "/sessions/new"
   end
-end
+end 
